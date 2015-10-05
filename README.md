@@ -1,3 +1,3 @@
 # ProjectEuler
 
-Just my tries to solve projectEuler in Scala
+My solutions to problems on projecteuler.net.

@@ -1,3 +1,6 @@
+import scala.annotation.tailrec
+import scala.util.control.TailCalls.TailRec
+
 object Problem8 {
 
   def main(args: Array[String]) {
@@ -25,13 +28,13 @@ object Problem8 {
     printLargestProduct(s)
   }
 
-   def process(s1: String):Long = {
+  @tailrec
+   def process(s1: String, r: Long):Long = {
     if (s1.isEmpty) 1.toLong
     else {
       val v = s1.charAt(0)
       val tmp: Long = (v+"").toLong
-      val ret :Long = tmp * process(s1.substring(1))
-      ret
+      process(s1.substring(1), r * tmp)
     }
   }
 
@@ -44,7 +47,7 @@ object Problem8 {
     while (i < s.length -length) {
       val s1 = s.substring(i, i + length)
 
-        val m = process(s1)
+        val m = process(s1, 1)
         if (m > max) {
           max = m
 //          Console.out.println(s1)

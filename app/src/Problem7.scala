@@ -1,21 +1,31 @@
 object Problem7 {
 
   def main(args: Array[String]) {
-   var i = 2
-    Console.out.println(isPrime(2))
-    Console.out.println(isPrime(3))
-    Console.out.println(isPrime(17))
-    Console.out.println(isPrime(15))
+    printPrimes()
   }
 
-  def isPrime(i: Int) = {
-    isPrimeAcc(2, i)
-  }
-  def isPrimeAcc(i:Int, j:Int) = {
-    var tmp = i
-    while (tmp % j != 0) {
-      tmp = tmp +1
+  def printPrimes() = {
+    val n: Int = 110001
+    val z = new Array[Boolean](n)
+    for (j <- z.indices)
+      z(j) = true
+
+    for (k <- 2 to 1001) {
+      if (z(k)) {
+        var tmp = k * k
+        while (tmp < n) {
+          z(tmp) = false
+          tmp = tmp + k
+        }
+      }
     }
-    tmp == j
+    var count = 1
+
+    for (l <- 2 to n - 1) {
+      if (z(l)) {
+        Console.out.println(count + ": " + l)
+        count = count + 1
+      }
+    }
   }
 }

@@ -34,7 +34,6 @@ object Problem12 {
   def divisors(t: Long): Int = {
     var c = 0
     var tmp: Long = 2
-    val d = 1
     val sqrt: Double = Math.sqrt(t)
     while (tmp <= sqrt) {
       if (t % tmp == 0) {

@@ -1,6 +1,3 @@
 language: scala
 scala:
   - 2.11.7
-notifications:
-  email:
-    radim.pavlicek@gmail.com

@@ -1,5 +1,4 @@
 import scala.annotation.tailrec
-import scala.util.control.TailCalls.TailRec
 
 object Problem8 {
 

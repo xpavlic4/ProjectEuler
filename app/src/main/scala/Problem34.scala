@@ -10,15 +10,12 @@
 object Problem34 {
 
 
-  val z = new Array[Int](10000)
+  val z = new Array[Int](10)
 
   def fakt1(n: Int, i: Int, acc: Int): Int = {
     if (i == 1) {
-
       acc
-    }
-
-    else {
+    } else {
       fakt1(i, i - 1, acc * i)
     }
   }
@@ -30,24 +27,31 @@ object Problem34 {
       fakt1(a.toInt, a.toInt, 1)
   }
 
+
+
   def main(args: Array[String]): Unit = {
-    z(0) = 0
-    for (f <- 1 to 9) {
-      val fakt2: Int = fakt(f)
-      z(f) = fakt2
-      println(f + " " + fakt2)
+    z(0) = 1
+    z(1) = 1
+    z(2) = 2
+    for (f <- 3 to 9) {
+      z(f) = fakt(f)
     }
-    for (i <- Stream.from(3)) {
-      val string: String = i.toString
-      val array: Array[Char] = string.toCharArray
-      var sum = 0
-      for (c <- array) {
-        sum += z(c -'0')
-      }
-      if (sum == i) {
-        println(i + " " + sum)
-      }
-    }
+
+    var sum = 0
+    for (i1 <- 0 to 9)
+      for (i2 <- 0 to 9)
+        for (i3 <- 0 to 9)
+          for (i4 <- 0 to 9)
+            for (i5 <- 0 to 9)
+              for (i6 <- 0 to 9)
+                for (i7 <- 0 to 9) {
+                  val ints: Array[Int] = Array(i1, i2, i3, i4, i5, i6, i7)
+                  val n = ints.foldLeft(0)((a, b) => a * 10 + b)
+                  val m = n.toString.map(_ - '0').map(z(_)).sum
+                  if (n == m && m > 2)
+                    sum = sum + n
+                }
+    println(sum)
   }
 }
 
